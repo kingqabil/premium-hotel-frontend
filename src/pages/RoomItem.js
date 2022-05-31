@@ -19,7 +19,7 @@ function RoomItem() {
       <Row>
         <Col>
           <p className="fs-6 text fw-light">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, facilis quidem voluptatem non doloribus voluptatum. Itaque earum, recusandae voluptatibus est facere id explicabo officiis dolores euma doloremque suscipit esse.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,facilis quidem voluptatem non doloribus voluptatum. Itaque earum, recusandae voluptatibus est facere id explicabo officiis dolores eum a doloremque suscipit esse.
           </p>
         </Col>
       </Row>
