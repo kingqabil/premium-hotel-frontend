@@ -3,6 +3,6 @@ import NavBar from './components/NavBar';
 
 const App = () => (
   <div className="App">
-    <NavBar />
+    <h1>Kali Hotel</h1>
   </div>
 );
