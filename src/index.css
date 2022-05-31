@@ -15,6 +15,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 code {
   font-family:
     source-code-pro,
@@ -24,6 +25,7 @@ code {
     'Courier New',
     monospace;
 }
+
 .room-item {
   border: 1px solid;
   display: flex;
@@ -37,7 +39,7 @@ code {
 }
 
 .room-item h2 {
-font-size: 13px;
+  font-size: 13px;
 }
 
 .room-image {
