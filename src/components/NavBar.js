@@ -13,6 +13,11 @@ const NavBar = () => {
       path: '/reservations',
       text: 'My Reservations',
     },
+    {
+      id: 3,
+      path: '/create_room',
+      text: 'Create Room',
+    },
   ];
 
   return (
