@@ -29,7 +29,7 @@ function Home() {
         </div>
         <div className="home">
           <div className="nav">
-          <img src={ph} className="ph-logo" alt="" />
+            <img src={ph} className="ph-logo" alt="" />
             <NavBar />
           </div>
           <div className="main">
