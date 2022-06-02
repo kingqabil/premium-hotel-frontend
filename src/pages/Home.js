@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { Offcanvas } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
@@ -33,7 +34,9 @@ function Home() {
             <h1>Lunar&apos;s rooms</h1>
             <div className="rooms">
               {rooms.map((e) => (
-                <RoomItem key={e} />
+                <NavLink to="/room" exact="true" key={e}>
+                  <RoomItem />
+                </NavLink>
               ))}
             </div>
           </div>
