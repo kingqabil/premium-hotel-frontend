@@ -32,7 +32,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_CURRENT_USER:
-      return action.playload;
+      return action.payload;
     default:
       return state;
   }

@@ -8,7 +8,7 @@ function RoomItem() {
     <Container className="room-item">
       <Row>
         <Col>
-          <Image className="room-image" src={image} alt="hotel room" />
+          <Image className="room-image" src={image} alt="" />
         </Col>
       </Row>
       <Row>
@@ -19,17 +19,15 @@ function RoomItem() {
       <Row>
         <Col>
           <p className="fs-6 text fw-light">
-            Lorem ipsum dolor sit amet
-            consectetur adipisicing elit.
-            Laudantium,facilis quidem
-            voluptatem non doloribus voluptatum.
-            Itaque earum, recusandae voluptatibus
-            est facere id explicabo officiis
-            dolores eum a doloremque suscipit esse.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium,
+            facilis quidem voluptatem non doloribus voluptatum. Itaque earum,
+            recusandae voluptatibus est facere id explicabo officiis dolores eum
+            a doloremque suscipit esse.
           </p>
         </Col>
       </Row>
     </Container>
   );
 }
+
 export default RoomItem;

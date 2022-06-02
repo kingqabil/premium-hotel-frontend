@@ -18,11 +18,6 @@ const NavBar = () => {
       path: '/create_room',
       text: 'Create Room',
     },
-    {
-      id: 4,
-      path: '/room_details',
-      text: 'Room Details',
-    },
   ];
 
   return (
@@ -31,7 +26,10 @@ const NavBar = () => {
         <ul>
           {links.map((link) => (
             <li key={link.id}>
-              <NavLink className="nav-link" to={link.path} exact="true">
+              <NavLink
+                to={link.path}
+                exact="true"
+              >
                 {link.text}
               </NavLink>
             </li>
@@ -41,4 +39,5 @@ const NavBar = () => {
     </section>
   );
 };
+
 export default NavBar;

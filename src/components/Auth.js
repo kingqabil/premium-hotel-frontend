@@ -22,6 +22,8 @@ export const AuthRoute = ({ children }) => {
     const { from } = location.state || { from: { pathname: '/' } };
     return <Navigate to={from} />;
   }
+
   return children;
 };
+
 export default Auth;

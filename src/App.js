@@ -5,7 +5,6 @@ import Home from './pages/Home';
 import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
 import Auth, { AuthRoute } from './components/Auth';
-import RoomDetails from './components/RoomDetails';
 
 const App = () => (
   <Router basename={process.env.PUBLIC_URL}>
@@ -32,15 +31,6 @@ const App = () => (
           <AuthRoute>
             <SignUp />
           </AuthRoute>
-        )}
-      />
-      <Route
-        path="/room_details"
-        element={(
-          <Auth>
-            <RoomDetails />
-          </Auth>
-
         )}
       />
     </Routes>
