@@ -1,14 +1,22 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Offcanvas } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import RoomItem from '../components/RoomItem';
 import NavBar from '../components/NavBar';
+import { getRooms } from '../redux/rooms/rooms';
 
 function Home() {
-  const rooms = [1, 2, 3, 4, 5];
-  const [show, setShow] = useState(false);
+  const rooms = [1, 2, 3, 4];
+  // const rr = useSelector((state) => state.roomsReducer);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getRooms());
+  }, [dispatch]);
+
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
@@ -38,5 +46,4 @@ function Home() {
     </>
   );
 }
-
 export default Home;
