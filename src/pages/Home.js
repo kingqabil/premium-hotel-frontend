@@ -7,6 +7,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import RoomItem from '../components/RoomItem';
 import NavBar from '../components/NavBar';
 import { getRooms } from '../redux/rooms/rooms';
+import ph from '../images/ph.png';
 
 function Home() {
   const rooms = [1, 2, 3, 4];
@@ -28,6 +29,7 @@ function Home() {
         </div>
         <div className="home">
           <div className="nav">
+          <img src={ph} className="ph-logo" alt="" />
             <NavBar />
           </div>
           <div className="main">
