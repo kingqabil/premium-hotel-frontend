@@ -9,22 +9,22 @@ const DELETE_RESERVATION = 'reservation/delete_reservation';
 
 export const createReservationAction = (payload) => ({
   type: CREATE_RESERVATION,
-  payload
+  payload,
 });
 
 export const getSingleReservationAction = (payload) => ({
   type: GET_SINGLE_RESERVATION,
-  payload
+  payload,
 });
 
 export const getAllReservationAction = (payload) => ({
   type: GET_ALL_RESERVATION,
-  payload
+  payload,
 });
 
 export const deleteAReservationAction = (payload) => ({
   type: DELETE_RESERVATION,
-  payload
+  payload,
 });
 
 export const reservationCreate = (payload) => async (dispatch) => {
