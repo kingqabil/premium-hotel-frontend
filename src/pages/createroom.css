@@ -23,6 +23,7 @@
   z-index: 2;
   transition: 300ms ease-in;
 }
+
 form {
   box-shadow: 17px 18px 17px 0 rgba(26, 25, 25, 0.8);
   -webkit-box-shadow: 17px 18px 17px 0 rgba(26, 25, 25, 0.8);
