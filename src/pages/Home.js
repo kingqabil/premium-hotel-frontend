@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import RoomItem from '../components/RoomItem';
 import NavBar from '../components/NavBar';
+
 function Home() {
   const rooms = [1, 2, 3, 4, 5];
   const [show, setShow] = useState(false);
