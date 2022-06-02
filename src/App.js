@@ -1,9 +1,8 @@
-import React from 'react';
-import NavBar from './components/NavBar';
+import Home from './pages/Home';
 
 const App = () => (
   <div className="App">
-    <NavBar />
+    <Home />
   </div>
 );
 
