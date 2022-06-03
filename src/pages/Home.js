@@ -1,14 +1,24 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { Offcanvas } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import RoomItem from '../components/RoomItem';
 import NavBar from '../components/NavBar';
+import { getRooms } from '../redux/rooms/rooms';
+import ph from '../images/ph.png';
 
 function Home() {
-  const rooms = [1, 2, 3, 4, 5];
-  const [show, setShow] = useState(false);
+  const rooms = [1, 2, 3, 4];
+  // const rr = useSelector((state) => state.roomsReducer);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(getRooms());
+  }, [dispatch]);
+
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
@@ -18,11 +28,20 @@ function Home() {
           <FontAwesomeIcon icon={faBars} onClick={handleShow} />
         </div>
         <div className="home">
-          <div className="nav"><NavBar /></div>
-          <div className="rooms">
-            {rooms.map((e) => (
-              <RoomItem key={e} />
-            ))}
+          <div className="nav">
+            <img src={ph} className="ph-logo" alt="" />
+            <NavBar />
+          </div>
+          <div className="main">
+            <h1>Premium&apos;s rooms</h1>
+            <h2>Please select a room for reservation</h2>
+            <div className="rooms">
+              {rooms.map((room) => (
+                <NavLink to="/room" exact="true" key={room}>
+                  <RoomItem />
+                </NavLink>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -38,5 +57,4 @@ function Home() {
     </>
   );
 }
-
 export default Home;

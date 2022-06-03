@@ -26,10 +26,7 @@ const NavBar = () => {
         <ul>
           {links.map((link) => (
             <li key={link.id}>
-              <NavLink
-                to={link.path}
-                exact="true"
-              >
+              <NavLink to={link.path} exact="true">
                 {link.text}
               </NavLink>
             </li>

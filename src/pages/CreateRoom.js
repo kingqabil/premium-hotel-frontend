@@ -11,10 +11,12 @@ const validationSchema = Yup.object().shape({
     .min(2, '*Names must have at least 2 characters')
     .max(50, '*Names can\'t be longer than 50 characters')
     .required('*Name is required'),
+
   city: Yup.string()
     .min(2, '*City must have at least 2 characters')
     .max(25, '*City can\'t be longer than 25 characters')
     .required('*City is required'),
+
   rate: Yup.number()
     .min(10, '*Rate must be $10 or greater')
     .required('*Rate is required'),
