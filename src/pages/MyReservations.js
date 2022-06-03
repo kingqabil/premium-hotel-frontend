@@ -1,13 +1,22 @@
-import React from 'react';
-import phfrom from '../images/ph.png';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import lunar from '../images/ph.png';
+import Reservation from '../components/Reservation';
 import NavBar from '../components/NavBar';
+import './reservations.css';
+import { getReservations } from '../redux/reservations/reservations';
 
 function MyReservation() {
-  const reservations = [1, 2, 3, 4, 5];
+  const reservations = useSelector((state) => state.reservationsReducer);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getReservations());
+  }, [dispatch]);
   return (
     <div className="home">
       <div className="nav">
-        <img src={phfrom} className="ph-logo" alt="" />
+        <img src={lunar} className="lunar-logo" alt="" />
         <NavBar />
       </div>
       <div className="main">
@@ -16,9 +25,9 @@ function MyReservation() {
           You are able to cancel the reservation before 24 hours of the
           reservation date
         </h2>
-        <div className="reservation">
+        <div className="reservations">
           {reservations.map((reservation) => (
-            <NavLink to="/reserv" exact="true" key={reservation} />
+            <Reservation reservation={reservation} key={reservation.id} />
           ))}
         </div>
       </div>
