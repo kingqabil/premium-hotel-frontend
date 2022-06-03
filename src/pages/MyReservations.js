@@ -18,7 +18,7 @@ function MyReservation() {
         </h2>
         <div className="reservation">
           {reservations.map((reservation) => (
-            <NavLink to="/reserv" exact="true" key={reservation}></NavLink>
+            <NavLink to="/reserv" exact="true" key={reservation} />
           ))}
         </div>
       </div>
