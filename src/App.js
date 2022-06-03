@@ -46,11 +46,11 @@ const App = () => (
       />
       <Route
         path="/reservations"
-        element={
+        element={(
           <Auth>
             <MyReservation />
           </Auth>
-        }
+        )}
       />
     </Routes>
   </Router>
