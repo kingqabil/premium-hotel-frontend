@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Offcanvas } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,8 +10,8 @@ import { getRooms } from '../redux/rooms/rooms';
 import ph from '../images/ph.png';
 
 function Home() {
-  const rooms = [1, 2, 3, 4];
-  // const rr = useSelector((state) => state.roomsReducer);
+  // const rooms = [1, 2, 3, 4];
+  const rooms = useSelector((state) => state.roomsReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,16 +29,16 @@ function Home() {
         </div>
         <div className="home">
           <div className="nav">
-            <img src={ph} className="ph-logo" alt="" />
+            <img src={ph} className="Premium Hotel-logo" alt="" />
             <NavBar />
           </div>
           <div className="main">
             <h1>Premium&apos;s rooms</h1>
             <h2>Please select a room for reservation</h2>
             <div className="rooms">
-              {rooms.map((room) => (
-                <NavLink to="/room" exact="true" key={room}>
-                  <RoomItem />
+              {rooms && rooms.map((room) => (
+                <NavLink to="/room" exact="true" key={room.id}>
+                  <RoomItem room={room} key={room.id} />
                 </NavLink>
               ))}
             </div>
