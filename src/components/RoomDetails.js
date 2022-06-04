@@ -1,70 +1,103 @@
 import React, { useState } from 'react';
-import '../roomDetails.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams, NavLink, useNavigate } from 'react-router-dom';
+import './roomDetails.css';
 import { Offcanvas } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import Image from '../images/pexels-pixabay-164595.jpg';
-import lunar from '../images/Shabelle.png';
 import NavBar from './NavBar';
+import { deleteRoom } from '../redux/rooms/rooms';
+import { setId } from '../redux/reservations/setId';
 
 const RoomDetails = () => {
-  const [show, setShow] = useState(false);
+  const rooms = useSelector((state) => state.roomsReducer);
+  const { id } = useParams();
 
+  const room = rooms.filter((r) => r.id === parseInt(id, 10));
+
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const roomsDb = {
-    name: 'Room1',
-    city: 'test-city',
-    rate: '100',
-    room_type: 'test-info',
-    amenities: ['amenities1', 'amenities2', 'amenities3', 'amenities5'],
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleClick = (id) => {
+    dispatch(deleteRoom(id));
+    setTimeout(() => {
+      navigate('/');
+      window.location.reload(true);
+    }, 1000);
   };
+
+  const handleId = (id) => {
+    dispatch(setId(id));
+  };
+
   return (
     <main className="contain">
-      <div className="vis">
+      <div className="p-2 vis">
         <FontAwesomeIcon icon={faBars} onClick={handleShow} />
       </div>
       <section className="displayRoom">
-        <div className="nav">
-          <img src={lunar} className="lunar-logo" alt="" />
+        <div className="nav pt-10">
+          <h1 className="brand">Premium Hotel</h1>
           <NavBar />
         </div>
-        <div className="details marginFive leftMargin">
-          <div className="displayTwo">
-            <img className="roomImage" src={Image} alt="hotel room" />
-          </div>
-          <div className="displayThree">
-            <h1 className="upperCase">{roomsDb.name}</h1>
-            <p>
-              City:
-              {roomsDb.city}
-            </p>
-            <p>
-              Room rate: $z
-              {roomsDb.rate}
-            </p>
-            <p>
-              Room type:
-              {roomsDb.room_type}
-            </p>
-            <ul>
-              {roomsDb.amenities.map((amenity) => (
-                <li key={amenity}>{amenity}</li>
-              ))}
-            </ul>
-            <button type="button" className="buttonConfig">
-              Add Reservation
-            </button>
-          </div>
-        </div>
+        <ul>
+          {room && room.map((single) => (
+            <li key={single.id}>
+              <div className="details marginFive leftMargin">
+                <div className="displayTwo">
+                  <img className="roomImage" src={single.picture} alt="hotel room" />
+                </div>
+                <div className="displayThree container top-0 info-table">
+                  <div className="name-city float-right text-right">
+                    <h2 className="fw-600">{single.name}</h2>
+                    <p>{single.city}</p>
+                  </div>
+                  <table className="table">
+                    <tbody>
+                      <tr>
+                        <th>Room Number</th>
+                        <td>{single.id}</td>
+                      </tr>
+                      <tr>
+                        <th>Room Type</th>
+                        <td>{single.room_type}</td>
+                      </tr>
+                      <tr>
+                        <th>Amenities</th>
+                        <td>{single.amenities}</td>
+                      </tr>
+                      <tr>
+                        <th>Rate</th>
+                        <td>{single.rate}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div className="flex flex-row button-text justify-around">
+                    <button type="button" className="buttonConfig upperClass" onClick={() => handleClick(single.id)}>
+                      <h3>Delete Room</h3>
+                    </button>
+                    <NavLink to="/add_reservation" exact="true">
+                      <button type="button" onClick={() => handleId(single.id)} className="buttonConfig upperClass">
+                        <h3>Reserve A Room</h3>
+                      </button>
+                    </NavLink>
+                  </div>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
       </section>
-      <Offcanvas show={show} onHide={handleClose}>
+      <Offcanvas className="darkened-off" show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Lunar</Offcanvas.Title>
+          <Offcanvas.Title><h1 className="brand">Premium Hotel</h1></Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
+          <NavBar className="text-black" />
         </Offcanvas.Body>
       </Offcanvas>
     </main>

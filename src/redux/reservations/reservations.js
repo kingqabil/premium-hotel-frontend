@@ -1,9 +1,9 @@
 const DELETE_RESERVATION = 'reservation/delete_reservation';
 const FETCH_DATA = 'reservations/FETCH_DATA';
 const UPDATE_STATE = 'reservations/UPDATE_STATE';
-const CREATE_RESERVATION = 'reservations/CREATE_ROOM';
+const CREATE_RESERVATION = 'reservations/CREATE_RESERVATION';
 
-const END_POINT = 'http://localhost:3000';
+const END_POINT = 'https://premium-hotel.herokuapp.com/';
 const API_ROUTE = '/api/v1/';
 
 const initialState = [];

@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik } from 'formik';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import './createroom.css';
-import { Container, Form, Button } from 'react-bootstrap';
+import {
+  Container, Form, Button, Offcanvas,
+} from 'react-bootstrap';
 import * as Yup from 'yup';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { addRoom } from '../redux/rooms/rooms';
+import NavBar from '../components/NavBar';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -33,8 +39,22 @@ const validationSchema = Yup.object().shape({
 
 const CreateRoom = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <section className="form-container">
+      <div className="p-2 vis">
+        <FontAwesomeIcon icon={faBars} onClick={handleShow} className="text-white" />
+      </div>
+      <div className="nav pt-10">
+        <h1 className="brand">Premium Hotel</h1>
+        <NavBar />
+      </div>
       <Container className="my_container">
         <Formik
           initialValues={{
@@ -47,10 +67,14 @@ const CreateRoom = () => {
           }}
           validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting, resetForm }) => {
-            dispatch(addRoom(values));
             setSubmitting(true);
-            resetForm();
+            dispatch(addRoom(values));
             setSubmitting(false);
+            resetForm();
+            setTimeout(() => {
+              navigate('/');
+              window.location.reload(true);
+            }, 1000);
           }}
         >
           {({
@@ -62,7 +86,7 @@ const CreateRoom = () => {
             handleSubmit,
             isSubmitting,
           }) => (
-            <Form onSubmit={handleSubmit} className="mx-auto row row-cols-1 row-cols-lg-2 bg-white p-4 d-flex justify-content-center align-items-center">
+            <Form onSubmit={handleSubmit} className="mx-auto row row-cols-1 row-cols-lg-2 bg-white p-4 d-flex justify-content-center align-items-center form">
               <Form.Group className="col mb-3" controlId="formBasicName">
                 <Form.Label>Room Name</Form.Label>
                 <Form.Control
@@ -116,7 +140,7 @@ const CreateRoom = () => {
                 ) : null}
               </Form.Group>
 
-              <Form.Group className="col mb-3" controlId="formBasicroom_type">
+              <Form.Group className="col mb-3" controlId="formBasicRoomType">
                 <Form.Label>Room Type</Form.Label>
                 <Form.Select
                   aria-label="Select Room Type Field"
@@ -131,7 +155,7 @@ const CreateRoom = () => {
                   <option value="Double">Double</option>
                   <option value="Mini Suite">Mini Suite</option>
                   <option value="Master Suite">Master Suite</option>
-                  <option value="Executive Suite">Executive Suite</option>
+                  <option value="Personalized plant setups">Executive Suite</option>
                   <option value="Presidential Suite">Presidential Suite</option>
                 </Form.Select>
 
@@ -140,26 +164,36 @@ const CreateRoom = () => {
                 ) : null}
               </Form.Group>
 
-              <Form.Group controlId="formBasicAmenities" className="col mb-3">
+              <Form.Group className="col mb-3" controlId="formBasicAmenities">
                 <Form.Label>Choose An Amenity</Form.Label>
-                <Form.Control
-                  type="text"
+                <Form.Select
+                  aria-label="Select Amenity Field"
                   name="amenities"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.amenities}
                   className={touched.amenities && errors.amenities ? 'error' : null}
-                />
+                >
+                  <option>Select Your Unique Amenity</option>
+                  <option value="In-Room Cocktail Station">In-Room Cocktail Station</option>
+                  <option value="In-room games">In-room games</option>
+                  <option value="In-room workout equipment">In-room workout equipment</option>
+                  <option value="Outdoor dining">Outdoor dining</option>
+                  <option value="Executive Suite">Personalized plant setups</option>
+                  <option value="Customized Room Theme">Customized Room Theme</option>
+                </Form.Select>
+
                 {touched.amenities && errors.amenities ? (
                   <div className="error-message">{errors.amenities}</div>
                 ) : null}
               </Form.Group>
 
               <Form.Group controlId="formBasicFile" className="col mb-3">
-                <Form.Label>Choose An Image</Form.Label>
+                <Form.Label>Add Your Image Link</Form.Label>
                 <Form.Control
-                  type="file"
+                  type="text"
                   name="picture"
+                  placeholder="Add an image URL"
                   onChange={handleChange}
                   onBlur={handleBlur}
                   value={values.picture}
@@ -171,7 +205,7 @@ const CreateRoom = () => {
               </Form.Group>
 
               <div className="w-md-75 mx-auto d-flex justify-content-center align-items-center mt-4">
-                <Button type="submit" disabled={isSubmitting} className="bg-blue-600 w-50 mx-auto">
+                <Button type="submit" disabled={isSubmitting} className="w-50 mx-auto room-btn">
                   Submit
                 </Button>
               </div>
@@ -179,6 +213,14 @@ const CreateRoom = () => {
           )}
         </Formik>
       </Container>
+      <Offcanvas className="darkened-off" show={show} onHide={handleClose}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title><h1 className="brand">Premium Hotel</h1></Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          <NavBar className="text-black" />
+        </Offcanvas.Body>
+      </Offcanvas>
     </section>
   );
 };

@@ -1,17 +1,15 @@
 import { React, useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { Offcanvas } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import RoomItem from '../components/RoomItem';
 import NavBar from '../components/NavBar';
 import { getRooms } from '../redux/rooms/rooms';
-import ph from '../images/ph.png';
 
-function Home() {
-  // const rooms = [1, 2, 3, 4];
+const Home = () => {
   const rooms = useSelector((state) => state.roomsReducer);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,37 +22,39 @@ function Home() {
   return (
     <>
       <div className="Container">
-        <div className="vis">
+        <div className="p-2 vis">
           <FontAwesomeIcon icon={faBars} onClick={handleShow} />
         </div>
         <div className="home">
-          <div className="nav">
-            <img src={ph} className="Premium Hotel-logo" alt="" />
+          <div className="nav pt-10">
+            <h1 className="brand">Premium Hotel</h1>
             <NavBar />
           </div>
           <div className="main">
-            <h1>Premium&apos;s rooms</h1>
-            <h2>Please select a room for reservation</h2>
+            <h1>Lunar&apos;s rooms</h1>
+            {rooms.length === 0 ? (
+              <h2>Please create a room</h2>
+            ) : (
+              <h2>Please select a room for reservation</h2>
+            )}
             <div className="rooms">
-              {rooms && rooms.map((room) => (
-                <NavLink to="/room" exact="true" key={room.id}>
-                  <RoomItem room={room} key={room.id} />
-                </NavLink>
+              {rooms.map((room) => (
+                <RoomItem room={room} key={room.id} rooms={rooms} />
               ))}
             </div>
           </div>
         </div>
       </div>
-      <Offcanvas show={show} onHide={handleClose}>
+      <Offcanvas className="darkened-off" show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+          <Offcanvas.Title><h1 className="brand">Premium Hotel</h1></Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
+          <NavBar className="text-black" />
         </Offcanvas.Body>
       </Offcanvas>
     </>
   );
-}
+};
+
 export default Home;
