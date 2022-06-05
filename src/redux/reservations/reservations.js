@@ -3,7 +3,7 @@ const FETCH_DATA = 'reservations/FETCH_DATA';
 const UPDATE_STATE = 'reservations/UPDATE_STATE';
 const CREATE_RESERVATION = 'reservations/CREATE_RESERVATION';
 
-const END_POINT = 'https://127.0.0.1:3001';
+const END_POINT = 'https://premium-hotel.herokuapp.com/';
 const API_ROUTE = '/api/v1/';
 
 const initialState = [];
