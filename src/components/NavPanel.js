@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadCurrentUser, logout } from '../redux/auth';
 
-const NavBar = () => {
+const NavPanel = () => {
   const isAuthenticated = useSelector(loadCurrentUser);
   const dispatch = useDispatch();
 
@@ -36,15 +36,15 @@ const NavBar = () => {
         <ul>
           {links.map((link) => (
             <li key={link.id} className="nav-link the-nav pt-0 pb-0 float-left text-black">
-              <NavLink activeClassName="active" to={link.path} exact="true">
+              <NavLink activeclassname="active" to={link.path} exact="true">
                 {link.text}
               </NavLink>
             </li>
           ))}
 
           {isAuthenticated && (
-            <li className="pt-60 log-out">
-              <a href="/" className="nav-link text-black button p-20 text-center" type="button" onClick={handleLogout}>Log Out</a>
+            <li className="log-out">
+              <a href="/" className="nav-link text-black button text-center" type="button" onClick={handleLogout}>Log Out</a>
             </li>
           )}
         </ul>
@@ -53,4 +53,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default NavPanel;

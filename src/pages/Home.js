@@ -4,8 +4,9 @@ import { Offcanvas } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import RoomItem from '../components/RoomItem';
-import NavBar from '../components/NavBar';
+import NavPanel from '../components/NavPanel';
 import { getRooms } from '../redux/rooms/rooms';
+import lunar from '../images/lunar.png';
 
 const Home = () => {
   const rooms = useSelector((state) => state.roomsReducer);
@@ -27,11 +28,11 @@ const Home = () => {
         </div>
         <div className="home">
           <div className="nav pt-10">
-            <h1 className="brand">Premium Hotel</h1>
-            <NavBar />
+            <img src={lunar} className="lunar-logo" alt="Premium Hotel Logo" />
+            <NavPanel />
           </div>
           <div className="main">
-            <h1>Lunar&apos;s rooms</h1>
+            <h1>Premium&apos;s rooms</h1>
             {rooms.length === 0 ? (
               <h2>Please create a room</h2>
             ) : (
@@ -47,10 +48,12 @@ const Home = () => {
       </div>
       <Offcanvas className="darkened-off" show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title><h1 className="brand">Premium Hotel</h1></Offcanvas.Title>
+          <Offcanvas.Title>
+            <img src={lunar} className="lunar-logo" alt="Premium Hotel Logo" />
+          </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <NavBar className="text-black" />
+          <NavPanel className="text-black" />
         </Offcanvas.Body>
       </Offcanvas>
     </>

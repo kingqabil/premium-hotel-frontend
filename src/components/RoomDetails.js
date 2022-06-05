@@ -5,7 +5,7 @@ import './roomDetails.css';
 import { Offcanvas } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import NavBar from './NavBar';
+import NavPanel from './NavPanel';
 import { deleteRoom } from '../redux/rooms/rooms';
 import { setId } from '../redux/reservations/setId';
 
@@ -41,8 +41,8 @@ const RoomDetails = () => {
       </div>
       <section className="displayRoom">
         <div className="nav pt-10">
-          <h1 className="brand">Premium Hotel</h1>
-          <NavBar />
+          <h1 className="brand">Lunar Hotel</h1>
+          <NavPanel />
         </div>
         <ul>
           {room && room.map((single) => (
@@ -72,7 +72,10 @@ const RoomDetails = () => {
                       </tr>
                       <tr>
                         <th>Rate</th>
-                        <td>{single.rate}</td>
+                        <td>
+                          $
+                          {single.rate}
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -94,10 +97,10 @@ const RoomDetails = () => {
       </section>
       <Offcanvas className="darkened-off" show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title><h1 className="brand">Premium Hotel</h1></Offcanvas.Title>
+          <Offcanvas.Title><h1 className="brand">Lunar Hotel</h1></Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-          <NavBar className="text-black" />
+          <NavPanel className="text-black" />
         </Offcanvas.Body>
       </Offcanvas>
     </main>
