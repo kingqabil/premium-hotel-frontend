@@ -11,7 +11,7 @@ function Reservation(props) {
 
   const getRoomRate = (id) => {
     let totalRate = 0;
-    rooms.forEach((room) => {
+    [rooms].forEach((room) => {
       if (room.id === id) {
         totalRate += room.rate;
       }

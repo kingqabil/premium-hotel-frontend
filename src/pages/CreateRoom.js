@@ -242,7 +242,7 @@ const CreateRoom = () => {
       <Offcanvas className="darkened-off" show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>
-            <img src={lunar} className="lunar-logo" alt="Lunar Hotel Logo" />
+            <img src={lunar} className="lunar-logo" alt="Premium Hotel Logo" />
           </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>

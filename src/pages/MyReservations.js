@@ -26,7 +26,7 @@ function MyReservation() {
         <FontAwesomeIcon icon={faBars} onClick={handleShow} />
       </div>
       <div className="nav pt-10">
-        <img src={lunar} className="lunar-logo" alt="Lunar Hotel Logo" />
+        <img src={lunar} className="lunar-logo" alt="Premium Hotel Logo" />
         <NavPanel />
       </div>
       <div className="main">
@@ -51,14 +51,14 @@ function MyReservation() {
         )}
         ;
         <div className="reservations">
-          {reservations && reservations.map((reservation) => (
-            <Reservation reservation={reservation} key={reservation.id} />
+          {reservations && [reservations].map((reservation) => (
+            <Reservation reservation={reservation} key={reservation.uid} />
           ))}
         </div>
         <Offcanvas className="darkened-off" show={show} onHide={handleClose}>
           <Offcanvas.Header closeButton>
             <Offcanvas.Title>
-              <img src={lunar} className="lunar-logo" alt="Lunar Hotel Logo" />
+              <img src={lunar} className="lunar-logo" alt="Premium Hotel Logo" />
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>

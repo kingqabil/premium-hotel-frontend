@@ -40,7 +40,7 @@ const Home = () => {
             )}
             <div className="rooms">
               {[rooms].map((room) => (
-                <RoomItem room={room} key={room.id} rooms={rooms} />
+                <RoomItem room={room} key={room.uid} rooms={rooms} />
               ))}
             </div>
           </div>
