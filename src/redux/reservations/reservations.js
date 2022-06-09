@@ -68,7 +68,7 @@ export const reservationsReducer = (state = initialState, action) => {
     case CREATE_RESERVATION:
       return [...state, action.payload];
     case DELETE_RESERVATION:
-      return state.filter((obj) => obj.id !== action.payload);
+      return [state].filter((obj) => obj.id !== action.payload);
     default:
       return state;
   }
