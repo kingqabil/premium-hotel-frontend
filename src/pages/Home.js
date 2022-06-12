@@ -39,7 +39,7 @@ const Home = () => {
               <h2>Please select a room for reservation</h2>
             )}
             <div className="rooms">
-              {rooms.map((room) => (
+              {Array.isArray(rooms) && rooms.map((room) => (
                 <RoomItem room={room} key={room.uid} rooms={rooms} />
               ))}
             </div>
