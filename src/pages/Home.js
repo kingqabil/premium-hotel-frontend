@@ -4,7 +4,9 @@ import { Offcanvas } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination, Scrollbar, Autoplay } from 'swiper';
+import SwiperCore, {
+  Navigation, Pagination, Scrollbar, Autoplay,
+} from 'swiper';
 import RoomItem from '../components/RoomItem';
 import NavPanel from '../components/NavPanel';
 import { getRooms } from '../redux/rooms/rooms';
