@@ -51,8 +51,8 @@ function MyReservation() {
         )}
         ;
         <div className="reservations">
-          {Array.isArray(reservations) && reservations.map((reservation) => (
-            <Reservation reservation={reservation} key={reservation.uid} />
+          {reservations && reservations.map((reservation) => (
+            <Reservation reservation={reservation} key={reservation.id} />
           ))}
         </div>
         <Offcanvas className="darkened-off" show={show} onHide={handleClose}>
