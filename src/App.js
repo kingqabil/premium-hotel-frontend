@@ -42,11 +42,19 @@ const App = () => (
       />
       <Route
         path="/room_details/:id"
-        element={(
+        element={
           <Auth>
             <RoomDetails />
           </Auth>
-        )}
+        }
+      />
+      <Route
+        path="/room_details/:id/reserve"
+        element={
+          <Auth>
+            <AddReservation />
+          </Auth>
+        }
       />
       <Route
         path="/create_room"

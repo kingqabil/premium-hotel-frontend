@@ -5,13 +5,12 @@ import { faBars, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { Formik } from 'formik';
 import { Form, Button, Offcanvas } from 'react-bootstrap';
 import * as Yup from 'yup';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { createReservation } from '../redux/reservations/reservations';
 import NavPanel from '../components/NavPanel';
 import lunar from '../images/lunar.png';
 import './addReservation.css';
-import { getRooms } from "../redux/rooms/rooms";
-
+import { getRooms } from '../redux/rooms/rooms';
 
 const validationSchema = Yup.object().shape({
 
@@ -27,7 +26,7 @@ const AddReservation = () => {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const roomId = useSelector((state) => state.setIdReducer);
+  const { id } = useParams();
   const rooms = useSelector((state) => state.roomsReducer);
 
   useEffect(() => {
@@ -47,20 +46,19 @@ const AddReservation = () => {
         />
       </button>
       <div className="fullScreen">
-        <div className="p-2 vis">
+        <button type="button" className="p-2 vis btn">
           <FontAwesomeIcon
             icon={faBars}
             onClick={handleShow}
             className="text-white"
           />
-        </div>
+        </button>
         <div className="txtWrapper">
           <Formik
             initialValues={{
-              check_in: "",
-              check_out: "",
-              room_id: roomId,
-              room: 0,
+              check_in: '',
+              check_out: '',
+              room_id: id,
             }}
             validationSchema={validationSchema}
             onSubmit={(values, { setSubmitting, resetForm }) => {
@@ -69,7 +67,7 @@ const AddReservation = () => {
               resetForm();
               setSubmitting(false);
               setTimeout(() => {
-                navigate("/reservations");
+                navigate('/reservations');
                 window.location.reload(true);
               }, 1000);
             }}
@@ -121,22 +119,42 @@ const AddReservation = () => {
 
                 <Form.Group controlId="formBasicCity">
                   <Form.Label>Room</Form.Label>
-                  <Form.Select
-                    aria-label="Select Room Field"
-                    name="room"
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.room}
-                    className={touched.city && errors.city ? "error" : null}
-                  >
-                    <option>Select Room</option>
-                    {Array.isArray(rooms) &&
-                      rooms.map((room) => (
+                  {id ? (
+                    <Form.Select
+                      aria-label="Select Room Field"
+                      name="room"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.room_id}
+                      disabled
+                      className="disabled"
+                    >
+                      {Array.isArray(rooms)
+                      && rooms.filter((room) => room.id === id) && rooms.map((room) => (
                         <option key={room.id} value={room.id}>
                           {room.name}
                         </option>
                       ))}
-                  </Form.Select>
+                    </Form.Select>
+                  ) : (
+
+                    <Form.Select
+                      aria-label="Select Room Field"
+                      name="room"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.room}
+                      className={touched.room && errors.room ? 'error' : null}
+                    >
+                      <option>Select Room</option>
+                      {Array.isArray(rooms)
+                      && rooms.map((room) => (
+                        <option key={room.id} value={room.id}>
+                          {room.name}
+                        </option>
+                      ))}
+                    </Form.Select>
+                  ) }
                   {touched.room && errors.room ? (
                     <div className="error-message">{errors.room}</div>
                   ) : null}
