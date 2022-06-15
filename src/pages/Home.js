@@ -31,9 +31,9 @@ const Home = () => {
   return (
     <>
       <div className="Container">
-        <div className="p-2 vis">
+        <button type="button" className="p-2 vis btn">
           <FontAwesomeIcon icon={faBars} onClick={handleShow} />
-        </div>
+        </button>
         <div className="home">
           <div className="nav pt-10">
             <img src={lunar} className="lunar-logo" alt="Premium Hotel Logo" />

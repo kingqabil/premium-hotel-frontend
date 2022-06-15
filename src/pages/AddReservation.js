@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -10,6 +10,8 @@ import { createReservation } from '../redux/reservations/reservations';
 import NavPanel from '../components/NavPanel';
 import lunar from '../images/lunar.png';
 import './addReservation.css';
+import { getRooms } from "../redux/rooms/rooms";
+
 
 const validationSchema = Yup.object().shape({
 
@@ -26,19 +28,24 @@ const AddReservation = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const roomId = useSelector((state) => state.setIdReducer);
+  const rooms = useSelector((state) => state.roomsReducer);
+
+  useEffect(() => {
+    dispatch(getRooms());
+  }, [dispatch]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleBack = () => navigate(-1);
   return (
     <div className="form-container1">
-      <div className="p-2">
+      <button type="button" className="p-2 btn">
         <FontAwesomeIcon
           icon={faArrowLeft}
           onClick={handleBack}
           className="text-white point"
         />
-      </div>
+      </button>
       <div className="fullScreen">
         <div className="p-2 vis">
           <FontAwesomeIcon
@@ -50,9 +57,10 @@ const AddReservation = () => {
         <div className="txtWrapper">
           <Formik
             initialValues={{
-              check_in: '',
-              check_out: '',
+              check_in: "",
+              check_out: "",
               room_id: roomId,
+              room: 0,
             }}
             validationSchema={validationSchema}
             onSubmit={(values, { setSubmitting, resetForm }) => {
@@ -61,7 +69,7 @@ const AddReservation = () => {
               resetForm();
               setSubmitting(false);
               setTimeout(() => {
-                navigate('/reservations');
+                navigate("/reservations");
                 window.location.reload(true);
               }, 1000);
             }}
@@ -108,6 +116,29 @@ const AddReservation = () => {
                     <div className="error-message-white">
                       {errors.check_out}
                     </div>
+                  ) : null}
+                </Form.Group>
+
+                <Form.Group controlId="formBasicCity">
+                  <Form.Label>Room</Form.Label>
+                  <Form.Select
+                    aria-label="Select Room Field"
+                    name="room"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.room}
+                    className={touched.city && errors.city ? "error" : null}
+                  >
+                    <option>Select Room</option>
+                    {Array.isArray(rooms) &&
+                      rooms.map((room) => (
+                        <option key={room.id} value={room.id}>
+                          {room.name}
+                        </option>
+                      ))}
+                  </Form.Select>
+                  {touched.room && errors.room ? (
+                    <div className="error-message">{errors.room}</div>
                   ) : null}
                 </Form.Group>
 

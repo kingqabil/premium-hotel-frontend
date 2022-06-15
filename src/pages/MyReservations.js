@@ -22,9 +22,9 @@ function MyReservation() {
   }, [dispatch]);
   return (
     <div className="home">
-      <div className="p-2 vis">
+      <button type="button" className="p-2 vis btn">
         <FontAwesomeIcon icon={faBars} onClick={handleShow} />
-      </div>
+      </button>
       <div className="nav pt-10">
         <img src={lunar} className="lunar-logo" alt="Premium Hotel Logo" />
         <NavPanel />

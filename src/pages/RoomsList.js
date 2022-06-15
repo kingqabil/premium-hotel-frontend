@@ -22,13 +22,13 @@ const RoomsList = () => {
 
   return (
     <>
-      <div className="p-2 vis">
+      <button type="button" className="p-2 vis btn">
         <FontAwesomeIcon
           icon={faBars}
           onClick={handleShow}
           className="text-dark"
         />
-      </div>
+      </button>
       <div className="d-flex justify-content-between">
         <div className="nav pt-10">
           <img src={lunar} className="lunar-logo" alt="Premium Hotel Logo" />
@@ -38,9 +38,9 @@ const RoomsList = () => {
           <h1 className="text-center fs-2">Available Rooms</h1>
           <Stack gap={3}>
             {Array.isArray(rooms)
-            && rooms.map((room) => (
-              <RoomListItem name={room.name} key={room.id} id={room.id} />
-            ))}
+              && rooms.map((room) => (
+                <RoomListItem name={room.name} key={room.id} id={room.id} />
+              ))}
           </Stack>
         </Container>
       </div>
