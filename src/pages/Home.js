@@ -39,12 +39,12 @@ const Home = () => {
             <img src={lunar} className="lunar-logo" alt="Premium Hotel Logo" />
             <NavPanel />
           </div>
-          <div className="main">
-            <h1>Premium&apos;s rooms</h1>
+          <div className="main overflow-y-hidden">
+            <h1 className="fs-1 fw-bold">Premium&apos;s rooms</h1>
             {rooms.length === 0 ? (
               <h2>Please create a room</h2>
             ) : (
-              <h2>Please select a room for reservation</h2>
+              <h2>Please select a room for reservation(Swipe Left or Right)</h2>
             )}
             <div className="rooms">
               <Swiper
