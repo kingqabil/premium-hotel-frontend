@@ -1,4 +1,4 @@
-const END_POINT = 'http://127.0.0.1:5000';
+const END_POINT = 'https://premium-hotel.herokuapp.com/';
 const API_ROUTE = '/api/v1/';
 
 const FETCH_DATA = 'rooms/FETCH_DATA';
