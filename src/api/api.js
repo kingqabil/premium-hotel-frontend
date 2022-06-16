@@ -18,18 +18,18 @@ export const baseApi = axios.create({
 
 // function that allows a user to register
 export const signup = async (user) => {
-  const response = await baseApi.post('/users/signup', { user });
-  const authToken = response.headers.authorization;
-  const currentUser = response.data;
+  const response = await baseApi.post('api/v1/users/signup', { user });
+  const authToken = await response.data.token;
+  const currentUser = response.data.data;
   localStorage.setItem('token', authToken);
 
   return { authToken, currentUser };
 };
 
 export const login = async (user) => {
-  const response = await baseApi.post('/users/login', { user });
-  const authToken = response.headers.authorization;
-  const currentUser = response.data;
+  const response = await baseApi.post('api/v1/users/login', { user });
+  const authToken = await response.data.token;
+  const currentUser = await response.data.data;
 
   localStorage.setItem('token', authToken);
   return { authToken, currentUser };
@@ -37,7 +37,7 @@ export const login = async (user) => {
 
 export const logout = async () => {
   const token = localStorage.getItem('token');
-  await baseApi.delete('/users/logout', {
+  await baseApi.destroy('api/v1/users/logout', {
     headers: {
       Authorization: `${token}`,
     },

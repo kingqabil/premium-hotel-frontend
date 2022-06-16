@@ -1,15 +1,17 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { signup } from '../redux/auth';
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     dispatch(signup(data));
+    navigate('/users/login');
   };
 
   return (
@@ -18,7 +20,7 @@ const SignUp = () => {
         <header>
           <img alt="logo" className="w-20 mx-auto mb-4" src="https://img.icons8.com/fluency-systems-regular/96/99c22a/5-star-hotel.png" />
         </header>
-        <form className="col" onSubmit={handleSubmit(onSubmit)} method="post">
+        <form className="col" onSubmit={handleSubmit(onSubmit)}>
           <input className="w-full p-2 mb-6 bg-green  border-b-2  outline-none focus:bg-gray-300" name="name" placeholder="Name" {...register('name', { required: true })} />
           <input className="w-full p-2 mb-6 bg-green  border-b-2  outline-none focus:bg-gray-300" name="email" placeholder="Email" {...register('email', { required: true })} />
           <input className="w-full p-2 mb-6 bg-green  border-b-2  outline-none focus:bg-gray-300" name="password" type="password" placeholder="Password" {...register('password', { required: true })} />
