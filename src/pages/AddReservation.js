@@ -58,7 +58,7 @@ const AddReservation = () => {
             initialValues={{
               check_in: '',
               check_out: '',
-              room_id: id,
+              room_id: id || '',
             }}
             validationSchema={validationSchema}
             onSubmit={(values, { setSubmitting, resetForm }) => {
@@ -122,7 +122,7 @@ const AddReservation = () => {
                   {id ? (
                     <Form.Select
                       aria-label="Select Room Field"
-                      name="room"
+                      name="room_id"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.room_id}
@@ -140,10 +140,10 @@ const AddReservation = () => {
 
                     <Form.Select
                       aria-label="Select Room Field"
-                      name="room"
+                      name="room_id"
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      value={values.room}
+                      value={values.room_id}
                       className={touched.room && errors.room ? 'error' : null}
                     >
                       <option>Select Room</option>

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteReservation } from '../redux/reservations/reservations';
+import { deleteReservation, getReservations } from '../redux/reservations/reservations';
 import differenceBetweenDate, { totalRoomRate } from '../logic/date_logic';
 
 function Reservation(props) {
@@ -9,9 +9,16 @@ function Reservation(props) {
   const { reservation } = props;
   const rooms = useSelector((state) => state.roomsReducer);
 
+  const HandleDelete = (id) => {
+    dispatch(deleteReservation(id));
+  };
+  useEffect(() => {
+    dispatch(getReservations());
+  }, [HandleDelete]);
+
   const getRoomRate = (id) => {
     let totalRate = 0;
-    [rooms].forEach((room) => {
+    rooms.forEach((room) => {
       if (room.id === id) {
         totalRate += room.rate;
       }
@@ -31,7 +38,9 @@ function Reservation(props) {
         </div>
         <div className="Nights tex">
           <h3>Nights:</h3>
-          <span>{differenceBetweenDate(reservation.check_in, reservation.check_out)}</span>
+          <span>
+            {differenceBetweenDate(reservation.check_in, reservation.check_out)}
+          </span>
         </div>
       </div>
       <div className="co2">
@@ -57,7 +66,7 @@ function Reservation(props) {
         <button
           type="button"
           className="btn btn-outline-danger"
-          onClick={() => dispatch(deleteReservation(reservation.id))}
+          onClick={() => HandleDelete(reservation.id)}
         >
           Cancel
         </button>

@@ -22,7 +22,7 @@ function MyReservation() {
   }, [dispatch]);
   return (
     <div className="home">
-      <button type="button" className="p-2 vis btn">
+      <button type="button" className="p-2 vis btn w-25">
         <FontAwesomeIcon icon={faBars} onClick={handleShow} />
       </button>
       <div className="nav pt-10">
@@ -30,7 +30,7 @@ function MyReservation() {
         <NavPanel />
       </div>
       <div className="main">
-        <h1>My reservations</h1>
+        <h1 className="fs-1 fw-bold text-center">My reservations</h1>
         {reservations.length === 0 ? (
           <h2 className="no-reservation lh-lg mt-5 fs-4">
             Oh Oh!
@@ -52,7 +52,7 @@ function MyReservation() {
         ;
         <div className="reservations">
           {Array.isArray(reservations) && reservations.map((reservation) => (
-            <Reservation reservation={reservation} key={reservation.uid} />
+            <Reservation reservation={reservation} key={reservation.id} />
           ))}
         </div>
         <Offcanvas className="darkened-off" show={show} onHide={handleClose}>
