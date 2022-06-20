@@ -28,6 +28,16 @@ const NavPanel = () => {
       path: '/create_room',
       text: 'Create Room',
     },
+    {
+      id: 4,
+      path: '/rooms',
+      text: 'Delete Room',
+    },
+    {
+      id: 5,
+      path: '/',
+      text: 'Reserve Room',
+    },
   ];
 
   return (
