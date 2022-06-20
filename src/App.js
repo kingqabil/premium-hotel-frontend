@@ -1,20 +1,22 @@
 /* eslint-disable react/jsx-wrap-multilines */
 import {
-  HashRouter as Router, Route, Routes,
+  BrowserRouter as Router, Route, Routes,
 } from 'react-router-dom';
 import Home from './pages/Home';
 import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
 import Auth, { AuthRoute } from './components/Auth';
+import RoomsList from './pages/RoomsList';
 import RoomDetails from './components/RoomDetails';
 import CreateRoom from './pages/CreateRoom';
 import MyReservation from './pages/MyReservations';
 import AddReservation from './pages/AddReservation';
 
 const App = () => (
-  <Router basename={process.env.PUBLIC_URL}>
+  <Router>
     <Routes>
       <Route
+        exact
         path="/"
         element={
           <Auth>
@@ -59,6 +61,14 @@ const App = () => (
         element={
           <Auth>
             <MyReservation />
+          </Auth>
+        }
+      />
+      <Route
+        path="/rooms"
+        element={
+          <Auth>
+            <RoomsList />
           </Auth>
         }
       />
