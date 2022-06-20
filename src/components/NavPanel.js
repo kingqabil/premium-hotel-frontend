@@ -35,7 +35,7 @@ const NavPanel = () => {
     },
     {
       id: 5,
-      path: '/',
+      path: '/add_reservation',
       text: 'Reserve Room',
     },
   ];

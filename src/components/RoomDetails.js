@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, NavLink, useNavigate } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import './roomDetails.css';
 import { Offcanvas } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -81,13 +81,13 @@ const RoomDetails = () => {
                   </table>
                   <div className="flex flex-row button-text justify-around">
                     <button type="button" className="buttonConfig upperClass" onClick={() => handleClick(single.id)}>
-                      <h3>Delete Room</h3>
+                      Delete Room
                     </button>
-                    <NavLink to="/add_reservation" exact="true">
+                    <Link to={{ pathname: `/room_details/${single.id}/reserve` }}>
                       <button type="button" onClick={() => handleId(single.id)} className="buttonConfig upperClass">
-                        <h3>Reserve A Room</h3>
+                        Reserve Room
                       </button>
-                    </NavLink>
+                    </Link>
                   </div>
                 </div>
               </div>

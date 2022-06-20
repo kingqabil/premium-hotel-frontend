@@ -22,7 +22,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getRooms());
-  }, [dispatch]);
+  }, []);
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -31,57 +31,58 @@ const Home = () => {
   return (
     <>
       <div className="Container">
-        <div className="p-2 vis">
+        <button type="button" className="p-2 vis btn">
           <FontAwesomeIcon icon={faBars} onClick={handleShow} />
-        </div>
+        </button>
         <div className="home">
           <div className="nav pt-10">
             <img src={lunar} className="lunar-logo" alt="Premium Hotel Logo" />
             <NavPanel />
           </div>
-          <div className="main">
-            <h1>Premium&apos;s rooms</h1>
+          <div className="main overflow-y-hidden">
+            <h1 className="fs-1 fw-bold">Premium&apos;s rooms</h1>
             {rooms.length === 0 ? (
               <h2>Please create a room</h2>
             ) : (
-              <h2>Please select a room for reservation</h2>
+              <h2>Please select a room for reservation(Swipe Left or Right)</h2>
             )}
             <div className="rooms">
-              <Swiper
-                spaceBetween={1}
-                slidesPerView={2}
-                autoplay
-                loop
-                navigation
-                pagination={{ clickable: true, dynamicBullets: true }}
-                scrollbar={{ draggable: true }}
-                breakpoints={{
-                  700: {
-                    spaceBetween: 100,
-                    slidesPerView: 3,
-                  },
-                  500: {
-                    spaceBetween: 100,
-                    slidesPerView: 2,
-                  },
-                  411: {
-                    spaceBetween: 100,
-                    slidesPerView: 2,
-                  },
-                  300: {
-                    spaceBetween: 0,
-                    slidesPerView: 1,
-                  },
-                }}
-              >
-                {Array.isArray(rooms)
+              {
+                rooms.length > 1 ? (
+
+                  <Swiper
+                    spaceBetween={50}
+                    slidesPerView={2}
+                    autoplay
+                    loop
+                    navigation
+                    pagination={{ clickable: true, dynamicBullets: true }}
+                    scrollbar={{ draggable: true }}
+                  >
+                    {Array.isArray(rooms)
                   && rooms.map((room) => (
                     <SwiperSlide key={room.id}>
                       <RoomItem room={room} key={room.id} rooms={rooms} />
                     </SwiperSlide>
                   ))}
-              </Swiper>
+                  </Swiper>
+                ) : (
+                  <Swiper
+                    spaceBetween={100}
+                    slidesPerView={1}
+                    centeredSlides
+                    centeredSlidesBounds
+                  >
+                    {Array.isArray(rooms)
+                  && rooms.map((room) => (
+                    <SwiperSlide key={room.id}>
+                      <RoomItem room={room} key={room.id} rooms={rooms} />
+                    </SwiperSlide>
+                  ))}
+                  </Swiper>
 
+                )
+              }
             </div>
           </div>
         </div>
