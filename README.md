@@ -18,7 +18,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://fantasy-bookstore.netlify.app/)
+[Live Demo Link](https://illustrious-manatee-a1d62c.netlify.app/)
 
 ## Getting Started
 
