@@ -3,9 +3,10 @@
 # Book an Appointment Frontend
 
 > Book an Appointment frontend is the frontend of the Book an Appointment app. The theme of the app is Hotels. The app allows a user to do the following:
+  - Login/Sign up.
   - Add Hotels to a list of hotels available for reservation.
   - Reserve selected Hotel.
-  - Use of api to store the given response.
+  - Delete selected hotels.
 
 ![screenshot](./src/images/screenshot.png)
 
