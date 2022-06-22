@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot test looks the same as the snapshot 1`] = `
+<div
+  className="flex h-screen bg-white"
+>
+  <div
+    className="w-full max-w-sm m-auto bg-gray-200 rounded p-5"
+  >
+    <header>
+      <img
+        alt="logo"
+        className="w-20 mx-auto mb-4"
+        src="https://img.icons8.com/fluency-systems-regular/96/99c22a/5-star-hotel.png"
+      />
+    </header>
+    <form
+      className="col"
+      onSubmit={[Function]}
+    >
+      <input
+        className="w-full p-2 mb-6 bg-green  border-b-2  outline-none focus:bg-gray-300"
+        name="name"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Name"
+      />
+      <input
+        className="w-full p-2 mb-6 bg-green  border-b-2  outline-none focus:bg-gray-300"
+        name="email"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Email"
+      />
+      <input
+        className="w-full p-2 mb-6 bg-green  border-b-2  outline-none focus:bg-gray-300"
+        name="password"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Password"
+        type="password"
+      />
+      <input
+        className="w-full p-2 mb-6 bg-green  border-b-2  outline-none focus:bg-gray-300"
+        name="password_confirmation"
+        onBlur={[Function]}
+        onChange={[Function]}
+        placeholder="Password Confirmation"
+        type="password"
+      />
+      <input
+        className="w-full bg-green-button text-white font-bold py-2 px-4 mb-6 rounded"
+        type="submit"
+        value="Sign Up"
+      />
+    </form>
+    <small
+      className="flex justify-center items-center"
+    >
+      Already have an account?
+      <a
+        className="cursor-pointer bg-green px-2 text-sm"
+        href="/users/login"
+        onClick={[Function]}
+      >
+        Log In
+      </a>
+    </small>
+  </div>
+</div>
+`;

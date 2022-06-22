@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot test looks the same as the snapshot 1`] = `
+<section>
+  <nav>
+    <ul>
+      <li
+        className="nav-link the-nav pt-0 pb-0 float-left text-black"
+      >
+        <a
+          activeclassname="active"
+          aria-current="page"
+          className="active"
+          exact="true"
+          href="/"
+          onClick={[Function]}
+        >
+          Home
+        </a>
+      </li>
+      <li
+        className="nav-link the-nav pt-0 pb-0 float-left text-black"
+      >
+        <a
+          activeclassname="active"
+          className=""
+          exact="true"
+          href="/reservations"
+          onClick={[Function]}
+        >
+          My Reservations
+        </a>
+      </li>
+      <li
+        className="nav-link the-nav pt-0 pb-0 float-left text-black"
+      >
+        <a
+          activeclassname="active"
+          className=""
+          exact="true"
+          href="/create_room"
+          onClick={[Function]}
+        >
+          Create Room
+        </a>
+      </li>
+      <li
+        className="nav-link the-nav pt-0 pb-0 float-left text-black"
+      >
+        <a
+          activeclassname="active"
+          className=""
+          exact="true"
+          href="/rooms"
+          onClick={[Function]}
+        >
+          Delete Room
+        </a>
+      </li>
+      <li
+        className="nav-link the-nav pt-0 pb-0 float-left text-black"
+      >
+        <a
+          activeclassname="active"
+          className=""
+          exact="true"
+          href="/add_reservation"
+          onClick={[Function]}
+        >
+          Reserve Room
+        </a>
+      </li>
+    </ul>
+  </nav>
+</section>
+`;
