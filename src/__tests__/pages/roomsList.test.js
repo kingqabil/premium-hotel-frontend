@@ -6,18 +6,10 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import RoomsList from '../../pages/RoomsList';
 import store from '../../redux/configureStore';
 
-const rooms = [
-  {
-    name: 'Room',
-    picture: 'http://picmic/50',
-    id: 1,
-  },
-];
-
 const RoomsListProvider = () => (
   <Provider store={store}>
     <Router>
-      <RoomsList rooms={rooms} />
+      <RoomsList />
     </Router>
   </Provider>
 );

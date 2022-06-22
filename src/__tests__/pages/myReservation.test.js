@@ -6,19 +6,10 @@ import { BrowserRouter as Router } from "react-router-dom";
 import MyReservations from "../../pages/MyReservations";
 import store from "../../redux/configureStore";
 
-const reservation = [
-  {
-    check_in: "2000-01-01",
-    check_out: "2000-01-02",
-    room_id: 1,
-    id: 1,
-  },
-];
-
 const ReservationsProvider = () => (
   <Provider store={store}>
     <Router>
-      <MyReservations reservation={reservation} />
+      <MyReservations />
     </Router>
   </Provider>
 );

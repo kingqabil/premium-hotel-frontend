@@ -3,37 +3,34 @@ import "@testing-library/jest-dom";
 import { screen, render } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
-import MyReservations from "../../pages/MyReservations";
+import CreateRoom from "../../pages/CreateRoom";
 import store from "../../redux/configureStore";
 
-const reservation = [
-  {
-    check_in: "2000-01-01",
-    check_out: "2000-01-02",
-    room_id: 1,
-    id: 1,
-  },
-];
-
-const ReservationsProvider = () => (
+const CreateRoomProvider = () => (
   <Provider store={store}>
     <Router>
-      <MyReservations reservation={reservation} />
+      <CreateRoom />
     </Router>
   </Provider>
 );
 
 describe("render component", () => {
   it("renders the rooms list form", () => {
-    render(<ReservationsProvider />);
-    const heading = screen.getByText("My reservations");
-    expect(heading).toBeInTheDocument();
+    render(<CreateRoomProvider />);
+    const roomName = screen.getByLabelText(/room name/i);
+    const city = screen.getByLabelText(/city/i);
+    const roomType = screen.getByLabelText(/Room type/i);
+    const submit = screen.getByText(/submit/i);
+    expect(roomName).toBeInTheDocument();
+    expect(city).toBeInTheDocument();
+    expect(roomType).toBeInTheDocument();
+    expect(submit).toBeInTheDocument();
   });
 });
 
 describe("Snapshot test", () => {
   it("looks the same as the snapshot", () => {
-    const component = renderer.create(<ReservationsProvider />).toJSON();
+    const component = renderer.create(<CreateRoomProvider />).toJSON();
     expect(component).toMatchSnapshot();
   });
 });
