@@ -6,7 +6,6 @@
   - Add Hotels to a list of hotels available for reservation.
   - Reserve selected Hotel.
   - Use of api to store the given response.
-  By building this application, I will get my first experiance of React-Redux. 
 
 ![screenshot](./src/images/screenshot.png)
 
