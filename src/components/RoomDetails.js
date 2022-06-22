@@ -41,7 +41,7 @@ const RoomDetails = () => {
       </div>
       <section className="displayRoom">
         <div className="nav pt-10">
-          <h1 className="brand">Lunar Hotel</h1>
+          <h1 className="brand">Premium Hotel</h1>
           <NavPanel />
         </div>
         <ul>
