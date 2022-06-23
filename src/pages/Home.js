@@ -49,7 +49,8 @@ const Home = () => {
                 rooms.length > 1 ? (
 
                   <Swiper
-                    slidesPerView={3}
+                    spaceBetween={50}
+                    slidesPerView={2}
                     navigation
                     pagination={{ clickable: true, dynamicBullets: true }}
                     scrollbar={{ draggable: false }}
