@@ -40,6 +40,19 @@ To get a local copy up and running in your machine:
 
       npm start
 
+## KanBan Board
+
+### KanBan Board Link
+
+[KanBan Board Link](https://github.com/kingqabil/book-an-appointment-backend/projects/1)
+
+### Initial state
+
+![](https://user-images.githubusercontent.com/90222110/173905495-b88f89ce-1c2b-4322-b292-a00b7b2d74dc.png)
+
+### Final number of numbers
+ `3`
+
 ## Authors
 
 👤 **SadiQ HabiL**
