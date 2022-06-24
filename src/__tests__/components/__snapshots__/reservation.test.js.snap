@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot test looks the same as the snapshot 1`] = `
+<div
+  className="reservation"
+>
+  <div
+    className="co1"
+  >
+    <div
+      className="check-in tex"
+    >
+      <h3>
+        Check-in:
+      </h3>
+      <span />
+    </div>
+    <div
+      className="check-out tex"
+    >
+      <h3>
+        Check-out:
+      </h3>
+      <span />
+    </div>
+    <div
+      className="Nights tex"
+    >
+      <h3>
+        Nights:
+      </h3>
+      <span>
+        NaN
+      </span>
+    </div>
+  </div>
+  <div
+    className="co2"
+  >
+    <div
+      className="room-id tex"
+    >
+      <h3>
+        Room-id:
+      </h3>
+      <span>
+        №
+      </span>
+    </div>
+    <div
+      className="rate-id tex"
+    >
+      <h3>
+        Total Rate:
+      </h3>
+      <span>
+        $
+        NaN
+      </span>
+    </div>
+    <button
+      className="btn btn-outline-danger"
+      onClick={[Function]}
+      type="button"
+    >
+      Cancel
+    </button>
+  </div>
+</div>
+`;

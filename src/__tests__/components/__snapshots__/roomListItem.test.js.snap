@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot test looks the same as the snapshot 1`] = `
+<div
+  className="d-flex justify-content-between align-items-center py-1 px-3 shadow rounded-3"
+>
+  <h3
+    className="fw-bold"
+  >
+    Appart 1
+  </h3>
+  <button
+    className="buttonConfig upperClass"
+    onClick={[Function]}
+    type="button"
+  >
+    <h3>
+      Delete
+    </h3>
+  </button>
+</div>
+`;
