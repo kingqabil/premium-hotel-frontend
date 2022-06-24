@@ -39,6 +39,8 @@ To get a local copy up and running in your machine:
     4.Run app in your local browser:
 
       npm start
+      
+     Open http://localhost:3000 in your browser
 
 ## KanBan Board
 
